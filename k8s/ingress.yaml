@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: datetime-app-ingress
+  labels:
+    app: datetime-app
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: datetime-app.local  # Change this to your actual domain
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: datetime-app-service
+            port:
+              number: 80
+  # Uncomment and modify the following section for HTTPS with TLS
+  # tls:
+  # - hosts:
+  #   - datetime-app.yourdomain.com
+  #   secretName: datetime-app-tls
