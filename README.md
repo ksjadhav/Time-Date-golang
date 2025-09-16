@@ -346,7 +346,3 @@ This project demonstrates:
 4. ✅ **Internet Access**: Multiple options for exposing the app to WAN
 
 The application is production-ready with security best practices, health checks, and proper resource management.
-
-## License
-
-This project is open source and available under the MIT License.
